@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -62,7 +63,7 @@ const AnalysisResultDetail = ({ params }: Props) =>
     }
 
     fetchReceiptResult();
-  }, []);
+  }, [params.id]);
 
   if (loading) return <p>Loading...</p>;
   if (error)
@@ -73,7 +74,7 @@ const AnalysisResultDetail = ({ params }: Props) =>
   return (
     <div className="flex flex-wrap justify-between">
       <div className="flex-1 min-w-[300px] max-w-[50%]">
-        <img src={receiptResult?.url} alt="Receipt Image" className="w-full h-auto" />
+        <Image src={receiptResult?.url!} alt="Receipt Image" className="w-full h-auto" />
       </div>
       <div className="flex-1 min-w-[300px] max-w-[50%] p-4">
         <h1 className="flex-1 min-w-[300px] max-w-[50%] p-4">Receipt</h1>
